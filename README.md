@@ -6,7 +6,8 @@ Canvas Demos:
 - Solar System (Sun, Earth, Moon) Rotations
 - Canvas Raytracer Code
 
-`npm install`
 
+# Get Started
+`npm install`
 
 `npm start`
