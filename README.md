@@ -8,9 +8,7 @@ Canvas Demos:
 
 
 # Get Started
-`git clone https://github.com/garrettwong/canvasdemos
+`git clone https://github.com/garrettwong/canvasdemos`
+`npm install`
+`npm start`
 
-npm install
-
-npm start
-`
