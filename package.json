@@ -1,0 +1,27 @@
+{
+  "name": "canvasdemos",
+  "version": "1.0.0",
+  "description": "canvas playground",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garrettwong/canvasdemos.git"
+  },
+  "keywords": [
+    "canvas",
+    "demos"
+  ],
+  "author": "garrettwong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garrettwong/canvasdemos/issues"
+  },
+  "homepage": "https://github.com/garrettwong/canvasdemos#readme",
+  "dependencies": {
+    "lite-server": "^2.2.2"
+  }
+}

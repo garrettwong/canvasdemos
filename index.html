@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<style type="text/css">
+  		canvas { border: 1px solid black; }
+    </style>
+</head>
+
+<body onload="drawTests();">
+	<div class="test">
+
+	</div>
+
+	<div class="">
+		<canvas id="canvas" height="500" width="500"></canvas>
+	</div>
+
+	<!--<script src="bouncing-ball.js"></script>-->
+
+	<script>
+		function drawTests() {
+			var canvas = document.getElementById('canvas');
+			var ctx;
+
+			if (canvas.getContext) {
+				ctx = canvas.getContext('2d');
+			} else {
+				// canvas unsupported code
+				alert('canvas unsupported');
+			}
+
+			//drawRectangle1(ctx);
+
+			//drawRectangle2(ctx);
+
+		    //drawTriangle(ctx);
+
+		    happyFace(ctx);
+
+		    drawHeart(ctx);
+
+		    //drawPath(ctx);
+
+		    //drawShadowedText(ctx);
+
+		    //drawImage(ctx);
+
+		    //drawTransformedRectangles(ctx);
+
+		    //drawRotatedRectangles(ctx);
+		}
+
+		function drawRectangle1(ctx) {
+	  	   	ctx.fillStyle = "rgb(200,0,0)";
+	        ctx.fillRect (10, 10, 55, 50);
+	        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+	        ctx.fillRect (30, 30, 55, 50);
+		}
+
+		function drawRectangle2(ctx) {
+	        ctx.fillRect(25,25,100,100);
+		    ctx.clearRect(45,45,60,60);
+		    ctx.strokeRect(50,50,50,50);
+		}
+
+		function drawTriangle(ctx) {
+
+		    ctx.beginPath();
+		    ctx.fillStyle = "rgba(0, 123, 123, 0.5)";
+		    ctx.moveTo(250,200);
+		    ctx.lineTo(300,25);
+		    ctx.lineTo(350,200);
+		    ctx.fill();
+		}
+
+		function happyFace(ctx) {
+			ctx.beginPath();
+		    ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
+		    ctx.moveTo(110,75);
+		    ctx.arc(75,75,35,0,Math.PI,false);  // Mouth (clockwise)
+		    ctx.moveTo(65,65);
+		    ctx.arc(60,65,5,0,Math.PI*2,true);  // Left eye
+		    ctx.moveTo(95,65);
+		    ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
+		    ctx.stroke();
+		}
+
+		function drawHeart(ctx) {
+			ctx.beginPath();
+			ctx.fillStyle = "rgba(255, 100, 100, 0.8)";
+		    ctx.moveTo(75,40);
+		    ctx.bezierCurveTo(75,37,70,25,50,25);
+		    ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+		    ctx.bezierCurveTo(20,80,40,102,75,120);
+		    ctx.bezierCurveTo(110,102,130,80,130,62.5);
+		    ctx.bezierCurveTo(130,62.5,130,25,100,25);
+		    ctx.bezierCurveTo(85,25,75,37,75,40);
+		    ctx.fill();
+		}
+
+		function drawPath(ctx) {
+			// Rectangle
+			var rectangle = new Path2D();
+    		rectangle.rect(10, 10, 50, 50);
+
+		    var circle = new Path2D();
+		    circle.moveTo(125, 35);
+		    circle.arc(100, 35, 25, 0, 2 * Math.PI);
+
+		    ctx.stroke(rectangle);
+		    ctx.fill(circle);
+		}
+
+		function drawShadowedText(ctx) {
+			ctx.shadowOffsetX = 2;
+			ctx.shadowOffsetY = 2;
+			ctx.shadowBlur = 2;
+			ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+
+			ctx.font = "20px Times New Roman";
+			ctx.fillStyle = "Black";
+			ctx.fillText("Sample String", 5, 30);
+		}
+
+		function drawImage(ctx) {
+			var img = new Image();
+			img.onload = function () {
+				for (var i=0;i<4;i++){
+					for (var j=0;j<3;j++){
+						ctx.drawImage(img,j*130,i*118,130,118);
+					}
+				}
+			};
+
+			img.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
+		}
+
+		function drawTransformedRectangles(ctx) {
+			for (var i=0;i<3;i++) {
+				for (var j=0;j<3;j++) {
+					ctx.save();
+					ctx.fillStyle = 'rgb('+(51*i)+','+(255-51*i)+',255)';
+					ctx.translate(10+j*50,10+i*50);
+					ctx.fillRect(0,0,25,25);
+					ctx.restore();
+				}
+			}
+		}
+
+		function drawRotatedRectangles(ctx) {
+			// left rectangles, rotate from canvas origin
+			ctx.save();
+			// blue rect
+			ctx.fillStyle = "#0095DD";
+			ctx.fillRect(30,30, 100, 100); 
+			ctx.rotate((Math.PI/180)*25);
+			// grey rect
+			ctx.fillStyle = "#4D4E53";
+			ctx.fillRect(30,30, 100, 100);
+			ctx.restore();
+
+			// right rectangles, rotate from rectangle center
+			// draw blue rect
+			ctx.fillStyle = "#0095DD";
+			ctx.fillRect(150, 30, 100, 100);  
+
+			ctx.translate(200, 80); // translate to rectangle center 
+			// x = x + 0.5 * width
+			// y = y + 0.5 * height
+			ctx.rotate((Math.PI/180)*25); // rotate
+			ctx.translate(-200, -80); // translate back
+
+			// draw grey rect
+			ctx.fillStyle = "#4D4E53";
+			ctx.fillRect(150, 30, 100, 100);
+		}
+
+	</script>
+</body>
+
+
+</html>
